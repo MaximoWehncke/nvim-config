@@ -57,9 +57,22 @@ return {
 				lualine_z = {},
 			},
 			inactive_winbar = {
-				lualine_a = {},
-				lualine_b = { "filename" },
-				lualine_c = {},
+				lualine_a = {
+					{
+						"filetype",
+						color = { bg = "#282828" }, -- same as normal background
+						separator = { left = "", right = "" },
+					},
+				},
+				lualine_b = {
+					{
+						"filename",
+						color = { bg = "#282828", fg = "#ffffff", gui = "bold" },
+						separator = { left = "", right = "" },
+						padding = 2,
+					},
+				},
+				lualine_c = { "location" },
 				lualine_x = {},
 				lualine_y = {},
 				lualine_z = {},
