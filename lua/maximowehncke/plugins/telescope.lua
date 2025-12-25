@@ -32,6 +32,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
 						["?"] = "which_key", -- Show help in normal mode
 					},
 				},
+				layout_strategy = "vertical",
+				layout_config = {
+					horizontal = {
+						preview_width = 0.9,
+						results_width = 0.9,
+					},
+				},
 			},
 			extensions = {
 				["ui-select"] = {
