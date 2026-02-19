@@ -78,7 +78,7 @@ return {
 	-- 		})
 	-- 		keymap.set(
 	-- 			"n",
-	-- 			"<leader>cs",
+	-- 			"<leader>cd",
 	-- 			"<cmd>Copilot disable<CR><cmd>echo 'Copilot suggestion disabled'<CR>",
 	-- 			{ desc = "Disable Copilot suggestions", silent = true }
 	-- 		)
