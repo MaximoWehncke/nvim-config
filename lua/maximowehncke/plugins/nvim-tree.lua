@@ -4,6 +4,15 @@ return {
 	config = function()
 		local nvimtree = require("nvim-tree")
 
+		require("nvim-web-devicons").set_icon({
+			java = {
+				icon = "", -- Java coffee cup icon
+				color = "#50C2F7",
+				cterm_color = "196",
+				name = "Java",
+			},
+		})
+
 		-- recommended settings from nvim-tree documentation
 		vim.g.loaded_netrw = 1
 		vim.g.loaded_netrwPlugin = 1
@@ -28,6 +37,7 @@ return {
 						},
 					},
 				},
+				group_empty = true,
 			},
 			-- disable window_picker for
 			-- explorer to work well with
@@ -41,6 +51,7 @@ return {
 			},
 			filters = {
 				custom = { ".DS_Store" },
+				dotfiles = false,
 			},
 			git = {
 				ignore = false,
