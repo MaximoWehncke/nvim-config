@@ -3,6 +3,8 @@ return {
 	config = function()
 		require("smart-splits").setup({
 
+			default_amount = 12,
+
 			-- Configuration
 			resize_mode = {
 				silent = true,
