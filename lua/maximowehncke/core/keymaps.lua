@@ -73,5 +73,8 @@ keymap.set(
 	'<cmd>wa<CR><cmd>echo "you\'ve just saved everything, dude"<CR>',
 	{ desc = "Save everything, for real" }
 )
+keymap.set("n", "<leader>rr", "<cmd>e!<CR>", { desc = "Reset buffer to as it was before saving" })
 
--- hola como estas
+keymap.set("n", "<leader>bf", function()
+	vim.lsp.buf.format()
+end, { desc = "Format buffer" })
