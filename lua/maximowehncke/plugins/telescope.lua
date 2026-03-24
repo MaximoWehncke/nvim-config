@@ -75,15 +75,15 @@ return { -- Fuzzy Finder (files, lsp, etc)
 			}))
 		end, { desc = "[/] Fuzzily search in current buffer" })
 
-		vim.keymap.set("n", "<leader>s/", function()
-			builtin.live_grep({
-				grep_open_files = true,
-				prompt_title = "Live Grep in Open Files",
-			})
-		end, { desc = "[S]earch [/] in Open Files" })
+		-- vim.keymap.set("n", "<leader>s/", function()
+		-- 	builtin.live_grep({
+		-- 		grep_open_files = true,
+		-- 		prompt_title = "Live Grep in Open Files",
+		-- 	})
+		-- end, { desc = "[S]earch [/] in Open Files" })
 
-		vim.keymap.set("n", "<leader>sn", function()
+		vim.keymap.set("n", "<leader>fn", function()
 			builtin.find_files({ cwd = vim.fn.stdpath("config") })
-		end, { desc = "[S]earch [N]eovim files" })
+		end, { desc = "[F]ind [N]eovim files" })
 	end,
 }
