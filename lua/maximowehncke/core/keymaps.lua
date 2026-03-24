@@ -9,6 +9,12 @@ local keymap = vim.keymap -- for conciseness
 -- use jk to exit insert mode
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
+-- if text is wrap, it goes to the next visual line, otherwise normal j-k
+keymap.set('n', 'j', 'gj', { silent = true })
+keymap.set('n', 'k', 'gk', { silent = true })
+
+keymap.set("n", "<leader>sws", "<cmd>set wrap<CR>", { desc = "Wrap text" })
+keymap.set("n", "<leader>swu", "<cmd>set nowrap<CR>", { desc = "Unwrap text" })
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
