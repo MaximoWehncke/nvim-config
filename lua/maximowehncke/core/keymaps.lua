@@ -25,17 +25,6 @@ keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
 
--- window management
-local function go_to_tab_n()
-	for i = 1, 9 do
-		local key_combo = "<leader>t" .. i
-		local command = "<cmd>" .. i .. "tabnext<CR>"
-		local description = "Go to tab " .. i
-
-		vim.keymap.set("n", key_combo, command, { desc = description, silent = true })
-	end
-end
-go_to_tab_n()
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
