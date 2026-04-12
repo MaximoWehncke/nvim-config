@@ -37,6 +37,7 @@ return {
 				indent = { enable = true },
 				-- REMOVED: autotag = { enable = true }, -- This line is deprecated!
 				ensure_installed = {
+					"go",
 					"c",
 					"lua",
 					"javascript",
