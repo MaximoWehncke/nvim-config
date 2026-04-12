@@ -1,3 +1,54 @@
+local function supermaven_status()
+	local ok, api = pcall(require, "supermaven-nvim.api")
+	if not ok then
+		return ""
+	end
+	if api.is_running() then
+		return "󰓞"
+	else
+		return ""
+	end
+end
+
+local function fileicon()
+    return {
+        function()
+            local filename = vim.fn.expand("%:t")
+            local ext = vim.fn.expand("%:e")
+            local ok, devicons = pcall(require, "nvim-web-devicons")
+            return ok and devicons.get_icon(filename, ext, { default = true }) or ""
+        end,
+        color = function()
+            local filename = vim.fn.expand("%:t")
+            local ext = vim.fn.expand("%:e")
+            local ok, devicons = pcall(require, "nvim-web-devicons")
+            if ok then
+                local _, hl = devicons.get_icon(filename, ext, { default = true })
+                local fg = hl and vim.fn.synIDattr(vim.fn.hlID(hl), "fg#") or "#C0CAF5"
+                return { fg = fg }
+            end
+            return { fg = "#C0CAF5" }
+        end,
+        padding = { left = 1, right = 0 },
+        separator = { left = "", right = "" },
+    }
+end
+
+local function filename()
+    return {
+        function()
+            local name = vim.fn.expand("%:t")
+            if name == "" then return "[No Name]" end
+            local modified = vim.bo.modified and " ●" or ""
+            local readonly = vim.bo.readonly and " " or ""
+            return name .. modified .. readonly
+        end,
+        color = { fg = "#C0CAF5", gui = "italic" },
+        padding = { left = 1, right = 1 },
+        separator = { left = "", right = "" },
+    }
+end
+
 return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = {
@@ -37,7 +88,7 @@ return {
 			},
 			winbar = {
 				lualine_a = { "mode" },
-				lualine_b = { "filename" },
+				lualine_b = { fileicon(), filename()},
 				lualine_c = { "branch" },
 				lualine_d = {
 					{
@@ -46,7 +97,19 @@ return {
 					},
 					"%S",
 				},
-				lualine_x = { "diff" },
+				lualine_x = {
+					{
+						supermaven_status, -- function is the first element
+						color = function()
+							local ok, api = pcall(require, "supermaven-nvim.api")
+							if ok and api.is_running() then
+								return { fg = "#28FF2C" }
+							else
+								return { fg = "#ea6962" }
+							end
+						end,
+					},
+				},
 				lualine_y = {
 					{
 						lazy_status.updates,
@@ -57,22 +120,11 @@ return {
 				lualine_z = {},
 			},
 			inactive_winbar = {
-				lualine_a = {
-					{
-						"filetype",
-						color = { bg = "#282828" }, -- same as normal background
-						separator = { left = "", right = "" },
-					},
+				lualine_a = {},
+				lualine_b = {},
+				lualine_c = {
+					fileicon(),filename(),
 				},
-				lualine_b = {
-					{
-						"filename",
-						color = { bg = "#282828", fg = "#ffffff", gui = "bold" },
-						separator = { left = "", right = "" },
-						padding = 2,
-					},
-				},
-				lualine_c = { "location" },
 				lualine_x = {},
 				lualine_y = {},
 				lualine_z = {},
