@@ -77,7 +77,16 @@ return {
 				lualine_c = {
 					"branch",
 					fileicon(),
-					"filename",
+					{
+						function()
+							return " "
+						end,
+						padding = { left = 0, right = 0 },
+					},
+					{
+						"filename",
+						padding = { left = 0, right = 1 },
+					},
 					{
 						supermaven_status,
 						color = function()
