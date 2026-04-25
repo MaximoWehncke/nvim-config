@@ -55,6 +55,11 @@ keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 keymap.set("n", "dzz", "<cmd>%delete _<CR>i", { desc = "Delete all without yanking" })
 keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
 
+-- Disable esc to get use to jk 
+-- keymap.set("i", "<Esc>", function()
+--     vim.notify("Use jk to exit insert mode!!", vim.log.levels.WARN)
+-- end, { desc = "Force jk habit" })
+
 -- Scroll
 keymap.set("n", "<C-m>", "<Nop>")
 keymap.set("n", "<C-n>", "<C-W><C-W><C-D><C-W><C-W>", { desc = "Scoll half page down neighbour window" })
