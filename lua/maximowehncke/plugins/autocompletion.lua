@@ -111,7 +111,7 @@ return {
 					return false
 				end, -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
 
-        vim.keymap.set("n", "<leader>cst", "<cmd>SupermavenToggle<CR><cmd>echo 'SuperMaven toggled'<CR>", {desc = "Toggle supermacen suggestions on/off"})
+        vim.keymap.set("n", "<leader>ct", "<cmd>SupermavenToggle<CR><cmd>echo 'SuperMaven toggled'<CR>", {desc = "Toggle supermacen suggestions on/off"})
 			})
 		end,
 	},
