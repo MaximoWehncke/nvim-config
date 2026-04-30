@@ -47,7 +47,6 @@ return {
 		"nvim-lualine/lualine.nvim",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
-			"chrisgrieser/nvim-recorder",
 		},
 		config = function()
 			local lualine = require("lualine")
