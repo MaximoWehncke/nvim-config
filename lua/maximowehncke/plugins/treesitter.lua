@@ -6,7 +6,20 @@ return {
 		dependencies = {
 			"windwp/nvim-ts-autotag",
 			"JoosepAlviste/nvim-ts-context-commentstring",
-			"andymass/vim-matchup",
+			{
+					"andymass/vim-matchup",
+					init = function()
+							vim.g.matchup_matchparen_offscreen = { method = "popup" }
+					end,
+					config = function()
+							vim.api.nvim_create_autocmd("FileType", {
+									pattern = { "html" },
+									callback = function()
+											vim.b.matchup_matchparen_enabled = 0
+									end,
+							})
+					end,
+			},
 		},
 		config = function()
 			vim.g.skip_ts_context_commentstring_module = true
@@ -39,7 +52,10 @@ return {
 						node_decremental = "<bs>",
 					},
 				},
-				matchup = { enable = true },
+				matchup = {
+					enable = true,
+					disable = { "html" },
+				},
 			})
 		end,
 	},
