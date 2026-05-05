@@ -17,6 +17,13 @@ return {
 				cterm_color = "15",
 				name = "dotenv",
 			},
+			npy = {
+				icon = "",
+				color = "#50C2F7",
+				cterm_color = "196",
+				name = "Numpy_object",
+			},
+
 		})
 
 		-- recommended settings from nvim-tree documentation
