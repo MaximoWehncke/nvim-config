@@ -27,18 +27,18 @@ return {
 				javascriptreact = { "prettier" },
 				java = { "google-java-format" },
 			},
-			formatters = {
-				prettier = {
-					args = {
-						"--write",
-						"--config",
-						"frontend/prettier.config.js",
-						"--ignore-path",
-						"frontend/.prettierignore",
-						"$FILENAME",
-					},
-				},
-			},
+			-- formatters = {
+			-- 	prettier = {
+			-- 		args = {
+			-- 			"--write",
+			-- 			"--config",
+			-- 			"frontend/prettier.config.js",
+			-- 			"--ignore-path",
+			-- 			"frontend/.prettierignore",
+			-- 			"$FILENAME",
+			-- 		},
+			-- 	},
+			-- },
 		},
 	},
 }
