@@ -102,16 +102,16 @@ return {
         vim.keymap.set("n", "<leader>A", function() require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.inner") end)
     end,
 	},
-	{
-		"wansmer/treesj",
-		keys = {
-			{
-				"<leader>nm",
-				function() require("treesj").toggle() end,
-				desc = "Toggle split/join",
-			},
-		},
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		opts = { use_default_keymaps = false },
-	},
+	-- {
+	-- 	"wansmer/treesj",
+	-- 	keys = {
+	-- 		{
+	-- 			"<leader>nm",
+	-- 			function() require("treesj").toggle() end,
+	-- 			desc = "Toggle split/join",
+	-- 		},
+	-- 	},
+	-- 	dependencies = { "nvim-treesitter/nvim-treesitter" },
+	-- 	opts = { use_default_keymaps = false },
+	-- },
 }
