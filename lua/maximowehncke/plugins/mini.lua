@@ -19,6 +19,11 @@ return {
 
 			require("mini.pairs").setup()
 
+			require("mini.comment").setup()
+
+			require("mini.splitjoin").setup()
+
+
 			require("mini.operators").setup({
 				-- Each operation can be customized
 				evaluate = {
