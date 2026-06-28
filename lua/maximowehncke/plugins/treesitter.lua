@@ -5,12 +5,12 @@ return {
 		build = ":TSUpdate",
 		dependencies = {
 			"JoosepAlviste/nvim-ts-context-commentstring",
-			{
-				"andymass/vim-matchup",
-				init = function()
-					vim.g.matchup_matchparen_offscreen = { method = "popup" }
-				end,
-			},
+			-- {
+			-- 	"andymass/vim-matchup",
+			-- 	init = function()
+			-- 		vim.g.matchup_matchparen_offscreen = { method = "popup" }
+			-- 	end,
+			-- },
 		},
 		config = function()
 			require("nvim-treesitter.configs").setup({
@@ -52,15 +52,24 @@ return {
 						node_decremental = "<bs>",
 					},
 				},
-				matchup = {
-					enable = true,
-					disable = { "html" },
-				},
+				-- matchup = {
+				-- 	enable = true,
+				-- 	disable = { "html" },
+				-- },
 			})
 
 			-- Setup dependencies
 			require("ts_context_commentstring").setup({
 				enable_autocmd = false,
+			})
+		end,
+	},
+	{
+		"hiphish/rainbow-delimiters.nvim", -- Modern rainbow parentheses + matching
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("rainbow-delimiters.setup").setup({
+				strategy = require("rainbow-delimiters.strategy.global"),
 			})
 		end,
 	},
