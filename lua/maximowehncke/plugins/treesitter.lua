@@ -1,24 +1,15 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
+		commit = "c82bf96",
 		event = { "BufReadPre", "BufNewFile" },
 		build = ":TSUpdate",
 		dependencies = {
 			"JoosepAlviste/nvim-ts-context-commentstring",
-			-- {
-			-- 	"andymass/vim-matchup",
-			-- 	init = function()
-			-- 		vim.g.matchup_matchparen_offscreen = { method = "popup" }
-			-- 	end,
-			-- },
 		},
 		config = function()
-			require("nvim-treesitter.configs").setup({
-				highlight = {
-					enable = true,
-					additional_vim_regex_highlighting = false,
-				},
-				indent = { enable = true },
+			require("nvim-treesitter").setup({
 				ensure_installed = {
 					"go",
 					"c",
@@ -43,22 +34,18 @@ return {
 					"yaml",
 					"python",
 				},
-				incremental_selection = {
-					enable = true,
-					keymaps = {
-						init_selection = "<C-space>",
-						node_incremental = "<C-space>",
-						scope_incremental = false,
-						node_decremental = "<bs>",
-					},
-				},
-				-- matchup = {
-				-- 	enable = true,
-				-- 	disable = { "html" },
-				-- },
 			})
 
-			-- Setup dependencies
+			-- highlight/indent/folding must be enabled manually on `main`
+			vim.api.nvim_create_autocmd("FileType", {
+				callback = function()
+					pcall(vim.treesitter.start)
+					vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+					vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+					vim.wo.foldmethod = "expr"
+				end,
+			})
+
 			require("ts_context_commentstring").setup({
 				enable_autocmd = false,
 			})

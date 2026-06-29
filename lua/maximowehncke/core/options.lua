@@ -2,6 +2,11 @@ vim.cmd("let g:netrw_liststyle = 3")
 
 local opt = vim.opt
 
+-- NOTE: fixing tree sitter some how si making auto-folds. this disables it
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+
 opt.relativenumber = true
 opt.number = true
 
